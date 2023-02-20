@@ -18,7 +18,7 @@ jobs:
                   node-version: 18
                   registry-url: https://registry.npmjs.org
             - name: 🚀 publish
-              run: npm publish --access public
+              run: npm build && npm publish --access public
               working-directory: package
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}
