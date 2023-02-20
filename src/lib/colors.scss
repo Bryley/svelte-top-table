@@ -1,0 +1,51 @@
+:root {
+    // Header
+    --top-table--header-bg: #f1f1f1;
+    --top-table--header-fg: #616161;
+    --top-table--header-bg-group: var(--top-table--header-bg);
+    --top-table--header-fg-group: var(--top-table--header-fg);
+    --top-table--header-bg-group-hover: #d1d1d1;
+    --top-table--header-fg-group-hover: #424242;
+
+    // Cells
+    --top-table--cell-bg: #ffffff;
+    --top-table--cell-bg-alt: #f9f9f9;
+    --top-table--cell-bg-group: var(--top-table--cell-bg);
+    --top-table--cell-bg-group-alt: var(--top-table--cell-bg-alt);
+    --top-table--cell-fg: #000000;
+    --top-table--cell-fg-alt: #000000;
+    --top-table--cell-fg-group: #000000;
+    --top-table--cell-fg-group-alt: #000000;
+
+    --top-table--header-border: none;
+    --top-table--header-border-group: 2px solid #D6D6D6;
+
+    --top-table--cell-border: 1px solid #f2f2f2;
+    --top-table--cell-border-group: var(--top-table--header-border-group);
+
+    --top-table--cell-bg-hover: #f0f1f0;
+    --top-table--cell-fg-hover: #000000;
+
+    --top-table--cell-bg-disabled: unset;
+    --top-table--cell-fg-disabled: #999999;
+
+    --top-table--cell-bg-highlighted: #b1cde6;
+
+    --top-table--button-bg: none;
+    --top-table--button-fg: #191919;
+    --top-table--button-bg-hover: #2980b9;
+    --top-table--button-fg-hover: #fff;
+
+    --top-table--sort-button-bg: #3e3e3e12;
+    --top-table--sort-button-fg: var(--top-table--header-fg);
+    --top-table--sort-button-bg-hover: #3e3e3e3d;
+    --top-table--sort-button-fg-hover: var(--top-table--sort-button-fg);
+
+    --top-table--filter-group-box-shadow: inset 0 0 7px 3px #66666624;
+
+    --top-table--filter-border: #bdbdbd solid 2px;
+    --top-table--filter-invalid: #e1282882;
+
+    --top-table--filter-select-bg: #fff;
+    --top-table--filter-select-fg: #2c2c2c;
+}
