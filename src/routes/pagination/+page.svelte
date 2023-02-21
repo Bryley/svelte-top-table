@@ -1,9 +1,7 @@
 <script lang="ts">
-    import type { FilterGroup } from "$lib/pagination/filter";
     import FilterSelector from "$lib/pagination/filter/FilterSelector.svelte";
     import type { Pagination, PaginationInput } from "$lib/pagination/types";
-    import PaginationTable from "$lib/PaginationTable.svelte";
-    import { genColumnGroups } from "$lib/utils";
+    import {PaginationTable} from "$lib";
     import { type Number, getNumber, COLUMN_DATA } from "../example-data/number";
     import NumberRow from "./NumberRow.svelte";
 

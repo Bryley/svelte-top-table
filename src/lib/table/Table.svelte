@@ -56,14 +56,14 @@
     export let errorComp: typeof SvelteComponent | undefined = undefined;
     /** The components to pass into the error component */
     export let errorCompProps: { [key: string]: any } = {};
+    /** The sorting column data */
+    export let sortedColumn: SortData | null = null;
     /**
      * True if this Table component is inside a PaginationTable
      * (Use PaginationTable.svelte instead)
      */
     export let isPaginationTable: boolean = false;
 
-    /** The sorting column data */
-    export let sortedColumn: SortData | null = null;
 
     /*
      * Variables
