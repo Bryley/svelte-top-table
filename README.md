@@ -174,7 +174,14 @@ The columns that are a part of the group are given as the default slot of the co
 
 ### `PaginationTable`
 
-TODO
+The `PaginationTable` is for large Tables with many rows.
+
+#### Props
+
+| Property | Type                                                    | Required | Default | Description                                                                                                   |
+|----------|---------------------------------------------------------|----------|---------|---------------------------------------------------------------------------------------------------------------|
+| `data`   | `(search: PaginationInput) => Promise<Pagination<Row>>` | `true`   | -       | Describes how the table will retrieve its data. Either directly passed in, or an async function is passed in. |
+
 
 ### `FilterSelection`
 
