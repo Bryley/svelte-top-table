@@ -109,8 +109,6 @@
             $redraw = !$redraw;
         },
     });
-
-    $: console.log(columnGroups);
 </script>
 
 <div class="top-table--container" class:top-table--fillSpace={fillSpace}>
