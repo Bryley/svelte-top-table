@@ -1,25 +1,27 @@
 <script lang="ts">
-    import {TableGroup, TableColumn} from "$lib";
+    import { TableGroup, TableColumn } from "$lib";
     import type { ProgrammingLanguage } from "./types";
 
     export let row: ProgrammingLanguage;
 </script>
 
-<TableColumn id="name" title="Name" sticky={true} sortable={true}>
-    {row.name}
-</TableColumn>
+<TableGroup name="Main Data">
+    <TableColumn id="name" title="Name" sticky={true} sortable={true}>
+        {row.name}
+    </TableColumn>
 
-<TableColumn id="version" title="Version" sticky={true} sortable={true}>
-    {row.version}
-</TableColumn>
+    <TableColumn id="version" title="Version" sticky={true} sortable={true}>
+        {row.version}
+    </TableColumn>
 
-<TableColumn id="releaseDate" title="Release Date" sortable={true}>
-    {row.releaseDate}
-</TableColumn>
+    <TableColumn id="releaseDate" title="Release Date" sortable={true}>
+        {row.releaseDate}
+    </TableColumn>
 
-<TableColumn id="popularity" title="Popularity" sortable={true}>
-    {row.popularity}
-</TableColumn>
+    <TableColumn id="popularity" title="Popularity" sortable={true}>
+        {row.popularity}
+    </TableColumn>
+</TableGroup>
 
 <TableGroup name="Additional Content">
     <TableColumn id="website" title="Website">

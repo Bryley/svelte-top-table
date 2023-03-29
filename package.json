@@ -1,6 +1,6 @@
 {
     "name": "svelte-top-table",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/Bryley/svelte-top-table.git"
@@ -23,5 +23,8 @@
         "typescript": "^4.9.3",
         "vite": "^4.0.0"
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "svelte-top-table": "link:"
+    }
 }

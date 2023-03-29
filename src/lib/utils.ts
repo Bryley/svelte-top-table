@@ -5,9 +5,18 @@ export const TABLE_KEY = Symbol();
 
 export const redraw = writable<boolean>(false);
 
-export function genColumnGroups(columns: TableColumnData[]): ColumnGroup[] {
+export function genColumnGroups(
+    columns: TableColumnData[],
+    prevColumnGroups: ColumnGroup[]
+): ColumnGroup[] {
     const columnGroups: ColumnGroup[] = [];
     let currentGroup: ColumnGroup | null = null;
+
+    const prevGroups = Object.fromEntries(
+        prevColumnGroups.map((colGroup) => {
+            return [colGroup.group, colGroup];
+        })
+    );
 
     for (const col of columns) {
         if (currentGroup === null || col.group !== currentGroup.group) {
@@ -15,7 +24,7 @@ export function genColumnGroups(columns: TableColumnData[]): ColumnGroup[] {
             currentGroup = {
                 group: col.group,
                 columns: [col],
-                shown: true,
+                shown: prevGroups?.[col.group ?? ""]?.shown ?? true,
             };
             continue;
         }

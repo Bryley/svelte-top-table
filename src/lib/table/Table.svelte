@@ -88,7 +88,7 @@
     setContext<TableContext>(TABLE_KEY, {
         registerNewColumn: (columnId: string, columnData: TableColumnData) => {
             columns.set(columnId, columnData);
-            columnGroups = genColumnGroups([...columns.values()]);
+            columnGroups = genColumnGroups([...columns.values()], columnGroups);
         },
         isGroupShown: (group: string | null) => {
             const colGroup = columnGroups.find(
@@ -109,6 +109,8 @@
             $redraw = !$redraw;
         },
     });
+
+    $: console.log(columnGroups);
 </script>
 
 <div class="top-table--container" class:top-table--fillSpace={fillSpace}>
