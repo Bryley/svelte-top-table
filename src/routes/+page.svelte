@@ -17,7 +17,7 @@
         search: PaginationInput
     ): Promise<Pagination<Number>> {
         // This will usually be some kind of SQL instead
-        await new Promise((res) => setTimeout(res, 500));
+        await new Promise((res) => setTimeout(res, 100));
         const startIndex = search.page * search.maxResults;
         const endIndex = startIndex + search.maxResults;
 
@@ -33,6 +33,8 @@
         };
     }
 </script>
+
+<!-- TODO NTS: Work on replicating error where sorting in pagination table causes infinite loop -->
 
 <main>
     <h1>Svelte Top Table</h1>
@@ -73,6 +75,7 @@
                     bind:filter={search.filter}
                     columnData={COLUMN_DATA}
                 />
+                <pre>{JSON.stringify(search.filter.encode())}</pre>
             {/if}
         </div>
     </div>

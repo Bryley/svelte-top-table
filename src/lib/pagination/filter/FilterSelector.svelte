@@ -60,11 +60,12 @@
         {/if}
         {#if index < filter.filters.length - 1}
             <select
-                bind:value={filter.relationships[index]}
-                on:change={(e) => {
+                value={filter.relationships[index]}
+                on:change={async (e) => {
                     // This is because of the way relationships doesnt update
                     // @ts-ignore
                     filter.setRelationship(index, e.target?.value);
+                    filter = filter;
                 }}
             >
                 <option value={"AND"}>AND</option>

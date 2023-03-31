@@ -1,5 +1,6 @@
 <script lang="ts">
     import { TableColumn } from "$lib";
+    import TableGroup from "$lib/table/TableGroup.svelte";
     import type { Number } from "../example-data/number";
 
     export let row: Number;
@@ -17,9 +18,11 @@
 <TableColumn id="half" title="Half" sortable>
     {row.half}
 </TableColumn>
-<TableColumn id="fizz" title="FizzBuzz?" sortable>
-    {row.fizz}
-</TableColumn>
-<TableColumn id="text" title="Text" sortable>
-    {row.text}
-</TableColumn>
+<TableGroup name="Example">
+    <TableColumn id="fizz" title="FizzBuzz?" sortable>
+        {row.fizz}
+    </TableColumn>
+    <TableColumn id="text" title="Text" sortable>
+        {row.text}
+    </TableColumn>
+</TableGroup>
