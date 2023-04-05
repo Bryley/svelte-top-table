@@ -3,7 +3,6 @@
     import { FilterCondition, FilterGroup } from ".";
     import type { FilterColumnData } from "../types";
     import Condition from "./Condition.svelte";
-
     const dispatch = createEventDispatcher();
 
     export let filter: FilterGroup;
@@ -23,6 +22,7 @@
             type === "condition" ? new FilterCondition() : new FilterGroup();
         filter.add(newFilter);
         filter = filter;
+        change();
     }
 
     function removeFilter(index: number) {
@@ -33,6 +33,11 @@
         if (filter.filters.length <= 0) {
             dispatch("remove");
         }
+        change();
+    }
+
+    function change() {
+        dispatch('change');
     }
 </script>
 
@@ -47,6 +52,7 @@
                 bind:value={childFilter.value}
                 bind:valid={valids[index]}
                 on:remove={(_) => removeFilter(index)}
+                on:change={change}
             />
         {:else if childFilter instanceof FilterGroup}
             <div class="indent">
@@ -55,6 +61,7 @@
                     {columnData}
                     bind:valid={valids[index]}
                     on:remove={(_) => removeFilter(index)}
+                    on:change={change}
                 />
             </div>
         {/if}
@@ -66,6 +73,7 @@
                     // @ts-ignore
                     filter.setRelationship(index, e.target?.value);
                     filter = filter;
+                    change();
                 }}
             >
                 <option value={"AND"}>AND</option>

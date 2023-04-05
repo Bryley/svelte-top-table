@@ -66,11 +66,15 @@ This component handles displaying a 'FilterCondition' to the user
             (await columnData[selectedColumnName]?.categories?.()) ?? null;
     }
     $: populateCategories(columnName);
+
+    function change() {
+        dispatch('change');
+    }
 </script>
 
 <div class="top-table--condition" class:valid>
     <!-- Column Select -->
-    <select bind:value={columnName}>
+    <select bind:value={columnName} on:change={change}>
         <option value={null}> - </option>
         {#each Object.entries(columnData) as [col, colData]}
             <option value={col}>
@@ -81,7 +85,7 @@ This component handles displaying a 'FilterCondition' to the user
 
     {#if columnName !== null}
         <!-- Operator Select -->
-        <select bind:value={operator}>
+        <select bind:value={operator} on:change={change}>
             {#each getOperators(columnType) as op (op)}
                 <option value={op}>{op}</option>
             {/each}
@@ -89,22 +93,22 @@ This component handles displaying a 'FilterCondition' to the user
 
         <!-- Value Select -->
         {#if operator === "IS"}
-            <select bind:value>
+            <select bind:value on:change={change}>
                 <option value="NULL">NULL</option>
                 <option value="NOT NULL">NOT NULL</option>
             </select>
         {:else if columnType === "boolean"}
-            <select bind:value>
+            <select bind:value on:change={change}>
                 <option value={true}>True</option>
                 <option value={false}>False</option>
             </select>
         {:else if columnType === "number"}
-            <input type="number" bind:value placeholder="Value" />
+            <input type="number" bind:value placeholder="Value" on:change={change}/>
         {:else if columnType === "category"}
             {#if categories == null}
                 Loading...
             {:else}
-                <select bind:value>
+                <select bind:value on:change={change}>
                     {#each categories as category (category)}
                         <option value={category}>{category}</option>
                     {/each}
@@ -113,7 +117,7 @@ This component handles displaying a 'FilterCondition' to the user
         {:else}
             <div>
                 <span class="quotes">"</span>
-                <input type="text" bind:value placeholder="Value" />
+                <input type="text" bind:value placeholder="Value" on:change={change} />
                 <span class="quotes">"</span>
             </div>
         {/if}

@@ -32,6 +32,7 @@
             },
         };
     }
+    let pageTable: PaginationTable;
 </script>
 
 <!-- TODO NTS: Work on replicating error where sorting in pagination table causes infinite loop -->
@@ -64,6 +65,7 @@
 
         <div class="scroll">
             <PaginationTable
+                bind:this={pageTable}
                 data={numberData}
                 tableRow={NumberRow}
                 bind:search
@@ -74,6 +76,7 @@
                 <FilterSelector
                     bind:filter={search.filter}
                     columnData={COLUMN_DATA}
+                    on:change={pageTable?.change()}
                 />
                 <pre>{JSON.stringify(search.filter.encode())}</pre>
             {/if}

@@ -116,7 +116,7 @@
         Loading...
     {:then rows}
         <table bind:this={tableElement}>
-            <THead bind:sortedColumn {columnGroups} />
+            <THead bind:sortedColumn {columnGroups} on:sort={() => dispatch('sort')} />
             <TBody
                 on:click={(e) => dispatch("click", e.detail)}
                 on:contextmenu={(e) => dispatch("contextmenu", e.detail)}

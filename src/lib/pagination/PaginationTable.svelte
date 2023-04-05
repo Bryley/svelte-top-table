@@ -51,10 +51,17 @@
      */
     export let search: PaginationInput = DEFAULT_PAGINATION_INPUT(rowSizes[0]);
 
-    $: dataFetch = data(search);
+    let dataFetch: Promise<Pagination<Row>> = data(search);
 
+    /*
+     * Functions
+     */
     function getTotalPages(totalResults: number): number {
         return Math.ceil(totalResults / search.maxResults);
+    }
+
+    export function change() {
+        dataFetch = data(search);
     }
 </script>
 
@@ -85,6 +92,7 @@
                 data={pagination.results}
                 on:click={(e) => dispatch("click", e.detail)}
                 on:contextmenu={(e) => dispatch("contextmenu", e.detail)}
+                on:sort={change}
                 bind:sortedColumn={search.sort}
                 isPaginationTable={true}
                 {tableRow}
@@ -108,13 +116,14 @@
 
     <div class="top-table--page-btns">
         {#await dataFetch}
-            <PageButtons bind:page={search.page}>
+            <PageButtons bind:page={search.page} on:change={change}>
                 <slot slot="nav-before" name="nav-before">&lt;</slot>
                 <slot slot="nav-after" name="nav-after">&gt;</slot>
             </PageButtons>
         {:then pagination}
             <PageButtons
                 bind:page={search.page}
+                on:change={change}
                 pageMax={getTotalPages(pagination.pageInfo.totalResults)}
             >
                 <slot slot="nav-before" name="nav-before">&lt;</slot>
@@ -126,7 +135,7 @@
         <span>Show</span>
         <select
             bind:value={search.maxResults}
-            on:change={() => (search.page = 0)}
+            on:change={() => {search.page = 0; change()}}
         >
             {#each rowSizes as rowSize}
                 <option value={rowSize}>{rowSize}</option>

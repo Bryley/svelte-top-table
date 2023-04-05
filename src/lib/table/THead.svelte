@@ -3,6 +3,8 @@
     import type { TableContext, ColumnGroup, SortData, SortDirection } from "$lib/types";
     import { getContext } from "svelte";
     import TableHeaderCell from "./TableHeaderCell.svelte";
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
 
     export let columnGroups: ColumnGroup[];
 
@@ -15,6 +17,7 @@
             column,
             direction
         } : null;
+        dispatch('sort');
     }
 </script>
 

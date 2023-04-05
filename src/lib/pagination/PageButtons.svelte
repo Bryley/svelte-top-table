@@ -16,7 +16,7 @@
 
     function selectPage(selectedPage: number) {
         page = selectedPage;
-        dispatch("pagechange", selectedPage);
+        dispatch("change", selectedPage);
     }
 
     /**
