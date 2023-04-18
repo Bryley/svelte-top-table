@@ -79,7 +79,7 @@
         }
 
         &.top-table--disabled {
-            :global(td) {
+            :global(td *) {
                 color: var(--top-table--cell-fg-disabled);
                 filter: blur(0.03em);
                 text-decoration: line-through;

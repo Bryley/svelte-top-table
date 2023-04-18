@@ -32,7 +32,7 @@
             },
         };
     }
-    let pageTable: PaginationTable;
+    let pageTable: PaginationTable<NumberRow>;
 </script>
 
 <!-- TODO NTS: Work on replicating error where sorting in pagination table causes infinite loop -->
@@ -43,7 +43,7 @@
     <div class="example">
         <h2>Basic Table Example From Static</h2>
         <div class="scroll">
-            <Table data={languages} tableRow={ProgrammingLanguageRow} />
+            <Table data={languages} tableRow={ProgrammingLanguageRow} rowDisabled={_ => true} />
         </div>
     </div>
     <div class="example">
